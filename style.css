@@ -1,0 +1,129 @@
+body {
+  overflow: hidden;
+  background: lightgray;
+}
+
+#main {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+};
+
+#main_graphics {
+	height: 100%;
+	width: 100%;
+}
+
+#main_parameter {
+	height: 100%;
+	width: 100%;
+}
+
+#main_result {
+	height: 100%;
+	width: 100%;
+}
+
+#main .w3-black {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+};
+
+#svg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.node-container {
+  cursor: move;
+}
+
+.node-background {
+  fill: white;
+  stroke: green;
+}
+
+.node-header, .port-scrim {
+  fill: rgb(32, 147, 49);
+
+}
+
+.node-type-header {
+  fill: lightgray;
+
+}
+
+.node-header:hover, .port-scrim:hover{
+  fill: rgb(12, 227, 44);
+}
+
+.port-scrim_input{
+  fill:rgb(135, 2, 2);
+}
+.port-scrim_input:hover{
+  fill:rgb(240, 0, 0);
+}
+
+.node-header .header-title {
+  font-size: 16px;
+  fill: #fff;
+  text-anchor: middle;
+}
+
+.node-type-header .header-title {
+  font-size: 14px;
+  fill: gray;
+  text-anchor: middle;
+}
+
+.node-content {
+  fill: white;
+}
+
+.port {
+  cursor: pointer;
+}
+
+.port-outer {
+  fill: #777777;
+}
+
+.port-inner {
+  fill: #202020;
+}
+
+.port-label {
+  font-size: 12px;
+  fill: #202020;
+}
+
+.input-field .port-label {
+  text-anchor: start;
+}
+
+.output-field .port-label {
+  text-anchor: end;
+}
+
+.inoutput-field .port-label {
+  text-anchor: end;
+}
+
+.connector-handle {
+  fill: #1279be;
+}
+
+.connector-path {
+  stroke: #1279be;
+  stroke-width: 4;
+  fill: none;
+}
+
+.connector-path-outline {
+  stroke: #333;
+  stroke-width: 6;
+  fill: none;
+}
