@@ -1,3 +1,8 @@
+function addRoom() {
+	var room = new Room();
+	Rooms["neu"] = new Room();
+}
+
 // add a new Functionblock (model and view)
 class FunctionBlockController {
   constructor(fbt) {						// function block type - previously defined fb

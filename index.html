@@ -24,10 +24,81 @@
   <button onclick="w3_close()" class="w3-bar-item w3-button w3-right w3-padding-16" title="close Sidebar">×</button>
   </div>
   <div class="w3-bar-block">
-  <a class="w3-bar-item w3-button" href="javascript:new FunctionBlockController(fbt).drawFB();">Licht Baustein</a>
-  <a class="w3-bar-item w3-button" href="javascript:new FunctionBlockController(fbt).drawFB();">Rollladen Baustein</a>
-  <a class="w3-bar-item w3-button" href="javascript:new InputController().drawInput();">Eingang</a>
-  <a class="w3-bar-item w3-button" href="javascript:new OutputController().drawOutput();">Ausgang</a>
+  <a class="w3-bar-item w3-button" href="javascript:new FunctionBlockController(fbt).drawFB();">
+  <svg id="input" style="width:100%; height:100%;">
+	<g id="fb_" width="220" transform="scale(0.7)">
+	  <rect class="node-background" width="190" x="15" height="218" rx="2" ry="2"></rect>
+	  <g class="node-header" width="190">
+	  <rect class="header-rect" width="190" x="15" height="30"></rect>
+	  <text class="header-title" x="110" y="25">Lichtsteuerung</text>
+	  </g>
+	  <g class="node-type-header" width="190">
+	  <rect class="header-type-rect" width="190" x="15" y="30" height="30"></rect>
+	  <text class="header-title" x="110" y="55">Lichtsteuerung X5</text></g><g class="node-content"><g class="inoutputs"><g class="input-field" transform="translate(0, 72)"><g class="port" data-clickable="false"><polygon class="port-scrim_input" points="15,0 15,16 0,16 5,8 0,0" data-clickable="false" data-drag="port_5:port"></polygon></g><text class="port-label" x="25" y="14">taster1</text></g><g class="input-field" transform="translate(0, 102)"><g class="port" data-clickable="false"><polygon class="port-scrim_input" points="15,0 15,16 0,16 5,8 0,0" data-clickable="false" data-drag="port_5:port"></polygon></g><text class="port-label" x="25" y="14">taster2</text></g><g class="input-field" transform="translate(0, 132)"><g class="port" data-clickable="false"><polygon class="port-scrim_input" points="15,0 15,16 0,16 5,8 0,0" data-clickable="false" data-drag="port_5:port"></polygon></g><text class="port-label" x="25" y="14">taster3</text></g><g class="input-field" transform="translate(0, 162)"><g class="port" data-clickable="false"><polygon class="port-scrim_input" points="15,0 15,16 0,16 5,8 0,0" data-clickable="false" data-drag="port_5:port"></polygon></g><text class="port-label" x="25" y="14">taster4</text></g><g class="input-field" transform="translate(0, 192)"><g class="port" data-clickable="false"><polygon class="port-scrim_input" points="15,0 15,16 0,16 5,8 0,0" data-clickable="false" data-drag="port_5:port"></polygon></g><text class="port-label" x="25" y="14">taster5</text></g></g><g class="inoutputs"><g class="output-field" transform="translate(0, 72)"><g class="port" data-clickable="false"><polygon class="port-scrim" points="205,0 215,0 220,8 215,16 205,16" data-clickable="false" data-drag="port_5:port"></polygon></g><text class="port-label" x="195" y="14">OK</text></g><g class="output-field" transform="translate(0, 102)"><g class="port" data-clickable="false"><polygon class="port-scrim" points="205,0 215,0 220,8 215,16 205,16" data-clickable="false" data-drag="port_5:port"></polygon></g><text class="port-label" text-decoration="overline" x="195" y="14">OK</text></g></g></g></g>
+  </svg>
+  </a>
+  <a class="w3-bar-item w3-button" href="javascript:new FunctionBlockController(fbt).drawFB();">
+  
+  <svg id="input" style="width:100%; height:100%;">
+	<g id="fb_" width="220" transform="scale(0.7)">
+	  <rect class="node-background" width="190" x="15" height="165" rx="2" ry="2"></rect>
+	  <g class="node-header" width="190">
+	  <rect class="header-rect" width="190" x="15" height="30"></rect>
+	  <text class="header-title" x="110" y="25">Rollladen</text>
+	  </g>
+	  <g class="node-type-header" width="190">
+	  <rect class="header-type-rect" width="190" x="15" y="30" height="30"></rect>
+	  <text class="header-title" x="110" y="55">Rollladen X1</text></g><g class="node-content">
+	  <g class="inoutputs">
+	  <g class="input-field" transform="translate(0, 72)"><g class="port" data-clickable="false">
+	  <polygon class="port-scrim_input" points="15,0 15,16 0,16 5,8 0,0" data-clickable="false" data-drag="port_5:port"></polygon></g>
+	  <text class="port-label" x="25" y="14">rauf</text></g><g class="input-field" transform="translate(0, 102)">
+	  <g class="port" data-clickable="false"><polygon class="port-scrim_input" points="15,0 15,16 0,16 5,8 0,0" data-clickable="false" data-drag="port_5:port">
+	  </polygon></g><text class="port-label" x="25" y="14">stop</text></g><g class="input-field" transform="translate(0, 132)"><g class="port" data-clickable="false">
+	  <polygon class="port-scrim_input" points="15,0 15,16 0,16 5,8 0,0" data-clickable="false" data-drag="port_5:port"></polygon></g>
+	  <text class="port-label" x="25" y="14">runter</text>
+	  </g>
+	  </g>
+	  
+	  <g class="inoutputs"><g class="output-field" transform="translate(0, 72)">
+	  <g class="port" data-clickable="false"><polygon class="port-scrim" points="205,0 215,0 220,8 215,16 205,16" data-clickable="false" data-drag="port_5:port"></polygon>
+	  </g><text class="port-label" x="195" y="14">rauf</text></g><g class="output-field" transform="translate(0, 102)"><g class="port" data-clickable="false"><polygon class="port-scrim" points="205,0 215,0 220,8 215,16 205,16" data-clickable="false" data-drag="port_5:port"></polygon></g><text class="port-label" x="195" y="14">runter</text></g></g></g></g>
+  </svg>
+  
+  </a>
+  <a class="w3-bar-item w3-button" href="javascript:new InputController().drawInput();">
+    <svg id="input" style="width:100%; height:25px;"> 
+	<g id="in_" width="190" transform="scale(0.8)">
+	  <rect class="node-background" width="175" height="30" rx="2" ry="2">
+	  </rect>
+	  <text class="header-title" x="15" y="20">Eingang</text>
+	  <g class="output-field" transform="translate(0, 7)">
+	    <g class="port" data-clickable="false">
+		  <polygon class="port-scrim" points="175,0 185,0 190,8 185,16 175,16" data-clickable="false" data-drag="port_5:port">
+		  </polygon>
+		</g>
+      </g>
+	</g>
+	</svg>
+  </a>
+  <a class="w3-bar-item w3-button" href="javascript:new OutputController().drawOutput();">
+  <svg id="input" style="width:100%; height:25px;"> 
+	<g id="out_" width="190" transform="scale(0.8)">
+	  <rect class="node-background" width="175" x="15" height="30" rx="2" ry="2">
+	  </rect>
+	  <text class="header-title" x="25" y="20">Ausgang</text>
+	  <g class="input-field" transform="translate(0, 7)">
+	    <g class="port" data-clickable="false">
+		  <polygon class="port-scrim_input" points="15,0 15,16 0,16 5,8 0,0" data-clickable="false" data-drag="port_5:port">
+		  </polygon>
+		</g>
+      </g>
+	</g>
+  </svg>
+  </a>
+  <a class="w3-bar-item w3-button" href="javascript:new OutputController().drawOutput();">
+  Licht +
+  </a>
   </div>
 </div>
 

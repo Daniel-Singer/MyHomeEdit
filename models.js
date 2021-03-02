@@ -63,10 +63,23 @@ class Connector {
   }
 }
 
+class Room {
+  constructor() {
+    this.FBArray = {};
+    this.FBArrayCount = 0;
+    this.FuncArray = {};
+    this.FuncArrayCount = 0;
+    this.InArray = {};
+    this.InArrayCount = 0;
+    this.OutArray = {};
+    this.OutArrayCount = 0;
+  }
+}
+
 // test fb type
 var fbt = {
-	"name": "Wohnz. Hauptlicht",
-	"type": "Lichtsteuerung X6", 
+	"name": "Licht",
+	"type": "Lichtsteuerung X5", 
 	"inputs" : [
 	  {
 		  "name": "taster1",
@@ -87,11 +100,6 @@ var fbt = {
 	  {
 		  "name": "taster5",
 		  "type" : "int"		  
-	  },
-	  {
-		  "name": "taster6",
-		  "type" : "int",
-		  "inverted": false		  
 	  }
 	],
 	"outputs" : [
@@ -120,3 +128,5 @@ const InArray = {};
 var InArrayCount = 0;
 const OutArray = {};
 var OutArrayCount = 0;
+
+var Rooms = {};
