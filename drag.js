@@ -50,41 +50,41 @@ const Drag = (() => {
 		var id = nodeContainer.getAttribute('id');
 		
 		if(id.startsWith('fb_')) {
-		  var elem = FBArray[id];
+		  var elem = actRoomController.roomm.FBArray[id];
 		  if(del) {
 			  // delete FB
 			  elem.delete();
-			  delete FBArray[id];
+			  delete actRoomController.roomm.FBArray[id];
 		  }
 		  else {
 			properties.setFBProperties(elem);
 		  }
 		} else if(id.startsWith('func_')) {
-		  var elem = FuncArray[id];
+		  var elem = actRoomController.roomm.FuncArray[id];
 		  if(del) {
 			  // delete Func
 			  elem.delete();
-			  delete FuncArray[id];
+			  delete actRoomController.roomm.FuncArray[id];
 		  }
 		  else {
 			properties.setFuncProperties(elem);
 		  }
 		} else if(id.startsWith('in_')) {
-		  var elem = InArray[id];
+		  var elem = actRoomController.roomm.InArray[id];
 		  if(del) {
 			  // delete input
 			  elem.delete();
-			  delete InputArray[id];
+			  delete actRoomController.roomm.InArray[id];
 		  }
 		  else {
 			properties.setInputProperties(elem);
 		  }
 		} else if(id.startsWith('out_')) {
-		  var elem = OutArray[id];
+		  var elem = actRoomController.roomm.OutArray[id];
 		  if(del) {
 			  // delete Output
 			  elem.delete();
-			  delete OutputArray[id];
+			  delete actRoomController.roomm.OutArray[id];
 		  }
 		  else {
 			properties.setOutputProperties(elem);

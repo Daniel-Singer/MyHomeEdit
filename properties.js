@@ -2,6 +2,36 @@ class Properties {
 	constructor() {
 	}
 	
+	setRoomProperties(room) {
+		if(room == undefined || room.roomm == undefined)
+			return;
+		var props = document.getElementById("properties");
+		props.innerHTML="";
+		var propTable = document.createElement("table");
+		propTable.classList.add("table-style-three");
+		props.appendChild(propTable);
+		var propTbody = document.createElement("tody");
+		propTable.appendChild(propTbody);
+		
+		var propTr = document.createElement("tr");
+		propTbody.appendChild(propTr);
+		
+		// set input name
+		var propTd1 = document.createElement("td");
+		propTr.appendChild(propTd1);
+		propTd1.innerHTML = "name";
+		
+		var propTd2 = document.createElement("td");
+		propTr.appendChild(propTd2);
+		var roomNameInput = document.createElement("input");
+		roomNameInput.value = room.roomm.name;
+		propTd2.appendChild(roomNameInput);
+		
+		roomNameInput.addEventListener ("change", function () {
+			room.updateName(this.value);
+		});
+	}
+	
 	setFBProperties(fbC) {
 		if(fbC == undefined || fbC.fbm == undefined)
 			return;

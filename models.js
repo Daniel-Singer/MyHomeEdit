@@ -4,7 +4,7 @@
 */
 class FunctionBlockModel {
   constructor(fbt) {
-    this.id = `fb_${FBArrayCount++}`;
+    this.id = `fb_${actRoomController.roomm.FBArrayCount++}`;
     this.name = fbt.name;
 	this.type = fbt.type;
     //this.ports = ports;
@@ -17,7 +17,7 @@ class FunctionBlockModel {
 
 class FunctionModel {
   constructor() {
-    this.id = `func_${FuncArray.length + 1}`;
+    this.id = `func_${actRoomController.FuncArray.length + 1}`;
     this.name = "";
    // this.ports = ports;
     this.inputPorts = [];
@@ -29,7 +29,7 @@ class FunctionModel {
 
 class InputModel {
   constructor() {
-	this.id = `in_${InArrayCount++}`;
+	this.id = `in_${actRoomController.roomm.InArrayCount++}`;
     this.name = "Schalter Tür";
 	this.output = undefined;
 	this.x = 50;								// default drawing x coordinate
@@ -39,7 +39,7 @@ class InputModel {
 
 class OutputModel {
   constructor() {
-	this.id = `out_${OutArrayCount++}`;
+	this.id = `out_${actRoomController.roomm.OutArrayCount++}`;
     this.name = "Licht Wohnzimmer";
 	this.input = undefined;
 	this.x = 50;								// default drawing x coordinate
@@ -53,7 +53,7 @@ class OutputModel {
 class Connector {
 
   constructor(connectionType) {
-    this.id = `connector_${++nextUid}`;
+    this.id = `connector_${++actRoomController.nextUid}`;
 //    this.dragType = "connector";
 //    this.isSelected = false;
 //    this.element = connectorElement.cloneNode(true);
@@ -63,8 +63,9 @@ class Connector {
   }
 }
 
-class Room {
-  constructor() {
+class RoomModel {
+  constructor(name) {
+    this.name = name;
     this.FBArray = {};
     this.FBArrayCount = 0;
     this.FuncArray = {};
@@ -73,6 +74,7 @@ class Room {
     this.InArrayCount = 0;
     this.OutArray = {};
     this.OutArrayCount = 0;
+	this.nextUid = 0;
   }
 }
 
@@ -82,34 +84,66 @@ var fbt = {
 	"type": "Lichtsteuerung X5", 
 	"inputs" : [
 	  {
-		  "name": "taster1",
-		  "type" : "int"
+		  "name": "eingang1",
+		  "type" : "bool"
 	  },
 	  {
-		  "name": "taster2",
-		  "type" : "int"
+		  "name": "eingang2",
+		  "type" : "bool"
 	  },
 	  {
-		  "name": "taster3",
-		  "type" : "int"
+		  "name": "eingang3",
+		  "type" : "bool"
 	  },
 	  {
-		  "name": "taster4",
-		  "type" : "int"		  
+		  "name": "eingang4",
+		  "type" : "bool"		  
 	  },
 	  {
-		  "name": "taster5",
-		  "type" : "int"		  
+		  "name": "eingang5",
+		  "type" : "bool"		  
 	  }
 	],
 	"outputs" : [
 	  {
-		  "name": "OK",
+		  "name": "ausgang",
 		  "type" : "bool"
 	  }
 	,
 	  {
-		  "name": "OK",
+		  "name": "ausgang_inv",
+		  "type" : "bool",
+		  "inverted": true
+	  }
+	]
+  }
+  
+  // test roll type
+var roll = {
+	"name": "Rollladen",
+	"type": "Rollladen X1", 
+	"inputs" : [
+	  {
+		  "name": "rauf",
+		  "type" : "bool"
+	  },
+	  {
+		  "name": "stop",
+		  "type" : "bool"
+	  },
+	  {
+		  "name": "runter",
+		  "type" : "bool"
+	  }
+	],
+	"outputs" : [
+	  {
+		  "name": "rauf",
+		  "type" : "bool"
+	  }
+	,
+	  {
+		  "name": "runter",
 		  "type" : "bool",
 		  "inverted": true
 	  }
@@ -120,13 +154,17 @@ var fbt = {
 // Array where newly created fbs, functions, outputs, .. get stored as object
 //
 // *******************************************************************************
-const FBArray = {};
-var FBArrayCount = 0;
-const FuncArray = {};
-var FuncArrayCount = 0;
-const InArray = {};
-var InArrayCount = 0;
-const OutArray = {};
-var OutArrayCount = 0;
-
-var Rooms = {};
+//const FBArray = {};
+//var FBArrayCount = 0;
+//const FuncArray = {};
+//var FuncArrayCount = 0;
+//const InArray = {};
+//var InArrayCount = 0;
+//const OutArray = {};
+//var OutArrayCount = 0;
+//var actRoomController = new RoomController("Wohnzimmer_Licht");
+var RoomControllers = {};
+var actRoomController = undefined;
+var RoomControllerCount = 0;
+//Rooms["Wohnzimmer_Licht"] = actRoom;
+//Rooms["Kueche_Licht"] = new Room("Kueche_Licht");

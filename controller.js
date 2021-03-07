@@ -1,7 +1,3 @@
-function addRoom() {
-	var room = new Room();
-	Rooms["neu"] = new Room();
-}
 
 // add a new Functionblock (model and view)
 class FunctionBlockController {
@@ -10,7 +6,6 @@ class FunctionBlockController {
 	this.fbV = new FunctionBlockView(this.fbm);
     shapeLookup[this.fbm.id] = this.fbm;
     // push function block into Device Array for easier overview
-    FBArray[this.fbm.id] = this;
   }
   
   drawFB() {
@@ -34,7 +29,7 @@ class FunctionController {
 	this.funcV = new FunctionView(this.funcm);
     shapeLookup[func.id] = func;
     // push Device into Device Array for easier overview
-    FuncArray[this.funcm.id] = this;
+    actRoom.FuncArray[this.funcm.id] = this;
   }
   
   drawFunc() {
@@ -57,7 +52,7 @@ class InputController {
 	this.inV = new InputView(this.inm);
     shapeLookup[this.inm.id] = this.inm;
     // push function block into Device Array for easier overview
-    InArray[this.inm.id] = this;
+    //actRoom.InArray[this.inm.id] = this;
   }
   
   drawInput() {
@@ -80,7 +75,7 @@ class OutputController {
 	this.outV = new OutputView(this.outm);
     shapeLookup[this.outm.id] = this.outm;
     // push function block into Device Array for easier overview
-    OutArray[this.outm.id] = this;
+    //actRoom.OutArray[this.outm.id] = this;
   }
   
   drawOutput() {
@@ -178,3 +173,54 @@ class ConnecitonController {
     this.pathOutline.setAttribute("points", data);
   }
 }
+
+function addRoom(room) {
+	roomController = new RoomController();
+	roomController.roomm.name = room;
+	RoomControllers[room] = roomController;
+	actRoomController = roomController;
+	
+	roomController.roomv.draw();
+	RoomControllerCount++;
+	
+	switch2Room(room);
+}
+
+class RoomController {
+	constructor(name) {
+		this.roomm = new RoomModel();
+		this.roomm.name = name;
+		this.roomv = new RoomView(this.roomm, this);
+	}
+	
+	updateName(name) {
+		RoomControllers[name] = this;
+		delete RoomControllers[this.roomm.name];
+		document.getElementById(this.roomm.name).id = name;
+		document.getElementById(this.roomm.name + "_node-layer").id = name + "_node-layer";
+		this.roomm.name = name;
+		this.roomv.updateCaption();
+	}
+	
+	addFunctionBlock(fbt) {
+		var fbc = new FunctionBlockController(fbt);
+		this.roomm.FBArray[fbc.fbm.id] = fbc;
+		fbc.drawFB();
+	}
+	
+	addInput() {
+		var inp = new InputController();
+		this.roomm.InArray[inp.inm.id] = inp;
+		inp.drawInput();
+	}
+	
+	addOutput() {
+		var outp = new OutputController();
+		this.roomm.OutArray[outp.outm.id] = outp;
+		outp.drawOutput();
+	}
+}
+
+addRoom("Wohnzimmer_Licht");
+addRoom("Kueche_Licht");
+switch2Room("Wohnzimmer_Licht");

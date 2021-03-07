@@ -5,6 +5,48 @@ var fbWidth = 220;
 var fbInputWidth = 15;
 var fbOutputWidth = 15;
 
+class RoomView {
+	constructor(roomm, roomc) {
+		this.roomm = roomm;
+		this.roomc = roomc;
+	}
+	
+	draw() {
+		// add room in tab
+		var bar = document.getElementById('rooms_bottom');
+		this.caption = document.createElement("button");
+		this.caption.innerText = this.roomm.name;
+		this.caption.id = this.roomm.name+ "_button";
+		this.caption.classList.add("w3-bar-item");
+		this.caption.classList.add("w3-button");
+		this.caption.onclick = function(ev) {
+			switch2Room(this.innerText);
+		}
+		bar.appendChild(this.caption);
+		
+		/*
+		* add new room in drawing area
+		*/
+		var roomDiv = document.createElement('div');
+		roomDiv.classList.add("room-main-div");
+		roomDiv.id = this.roomm.name;
+		var svg = document.createElementNS("http://www.w3.org/2000/svg", 'svg');
+		svg.classList.add("room-main-svg");
+		var nodeLayer = document.createElementNS("http://www.w3.org/2000/svg", 'g');
+		nodeLayer.id = this.roomm.name + "_node-layer";
+		var main = document.getElementById('rooms');
+		// set room style
+		
+		main.appendChild(roomDiv);
+		roomDiv.appendChild(svg);
+		svg.appendChild(nodeLayer);
+	}
+	
+	updateCaption() {
+	  this.caption.innerHTML = this.roomm.name;
+  }
+}
+
 class FunctionBlockView {
   constructor(fbm, fbc) {			// FunctionBlockModel fb
     this.fbm = fbm;
@@ -18,13 +60,13 @@ class FunctionBlockView {
 	this.rootg.setAttribute('transform', 'translate(' + this.fbm.x + ', ' + this.fbm.y + ')');
 	this.rootg.setAttribute('id', this.fbm.id);
     this.rootg.setAttribute('width', fbWidth);
-    var root = document.getElementById("node-layer");
+    var root = document.getElementById(actRoomController.roomm.name + "_node-layer");
     root.setAttribute('x', '30');
     root.setAttribute('y', '30');
     root.setAttribute('width', fbWidth);
     root.appendChild(this.rootg);
 
-    shapeElements.push(this.rootg);
+ //   shapeElements.push(this.rootg);
 
 	var maxports = this.fbm.inputPorts.length;
 
@@ -195,13 +237,13 @@ class InputView {
 	this.rootg.setAttribute('id', this.inm.id);
 	this.rootg.setAttribute('transform', 'translate(' + this.inm.x + ', ' + this.inm.y + ')');
     this.rootg.setAttribute('width', inputWidth);
-    var root = document.getElementById("node-layer");
+    var root = document.getElementById(actRoomController.roomm.name + "_node-layer");
     root.setAttribute('x', '30');
     root.setAttribute('y', '30');
     root.setAttribute('width', inputWidth);
     root.appendChild(this.rootg);
 
-    shapeElements.push(this.rootg);
+ //   shapeElements.push(this.rootg);
 
     // create node header
     var header = document.createElementNS("http://www.w3.org/2000/svg", "rect");
@@ -268,13 +310,13 @@ class OutputView {
 	this.rootg.setAttribute('id', this.outm.id);
 	this.rootg.setAttribute('transform', 'translate(' + this.outm.x + ', ' + this.outm.y + ')');
     this.rootg.setAttribute('width', outputWidth);
-    var root = document.getElementById("node-layer");
+    var root = document.getElementById(actRoomController.roomm.name + "_node-layer");
  //   root.setAttribute('x', '30');
  //   root.setAttribute('y', '30');
     root.setAttribute('width', outputWidth);
     root.appendChild(this.rootg);
 
-    shapeElements.push(this.rootg);
+ //   shapeElements.push(this.rootg);
 
     // create node header
     var header = document.createElementNS("http://www.w3.org/2000/svg", "rect");

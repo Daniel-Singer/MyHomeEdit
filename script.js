@@ -14,36 +14,24 @@ function load(devices) {
   devices.innerx
 }
 
-function switch2Graphics() {
-  document.getElementById('main_graphics').style.display = 'block';
-  document.getElementById('main_parameter').style.display = 'none';
-  document.getElementById('main_result').style.display = 'none';
-
-  document.getElementById('graphics').style.backgroundColor = 'lightgray';
-  document.getElementById('params').style.backgroundColor = 'black';
-  document.getElementById('params').style.color = 'black';
-  document.getElementById('result').style.backgroundColor = 'black';
+function switch2Room(room) {
+  // show only
+  for (var key in RoomControllers) {
+    if(key == room) {
+      actRoomController = RoomControllers[key];
+	  document.getElementById(key).style.display = 'block';
+	  document.getElementById(key + "_button").setAttribute("style", "background-color: lightgray;color:black;"); 
+	  properties.setRoomProperties(actRoomController);
+	}
+	else {
+	  document.getElementById(key).style.display = 'none';
+	  document.getElementById(key + "_button").style.backgroundColor = 'black';
+	  document.getElementById(key + "_button").style.color = 'white';
+	}
+  }
+  
+  
 }
-
-function switch2Parameter() {
-  document.getElementById('main_graphics').style.display = 'none';
-  document.getElementById('main_parameter').style.display = 'block';
-  document.getElementById('main_result').style.display = 'none';
-
-  document.getElementById('graphics').style.backgroundColor = 'black';
-  document.getElementById('params').style.backgroundColor = '#1a1a1a';
-  document.getElementById('result').style.backgroundColor = 'black';
-}
-
-function switch2Result() {
-  document.getElementById('main_graphics').style.display = 'none';
-  document.getElementById('main_parameter').style.display = 'none';
-  document.getElementById('main_result').style.display = 'block';
-
-  document.getElementById('graphics').style.backgroundColor = 'black';
-  document.getElementById('params').style.backgroundColor = 'black';
-  document.getElementById('result').style.backgroundColor = '#1a1a1a';
-};
 
 // Array where newly created devices get stored as object
 
@@ -397,11 +385,11 @@ class Diagram {
 
     this.dragElement = this.element = diagramElement;
 
-    shapeElements.forEach((element, i) => {
-      const shape = new ETHDevice(element, 50 + i * 250, 50);
-      shapeLookup[shape.id] = shape;
-      shapes.push(shape);
-    });
+ //   shapeElements.forEach((element, i) => {
+ //     const shape = new ETHDevice(element, 50 + i * 250, 50);
+ //     shapeLookup[shape.id] = shape;
+ //     shapes.push(shape);
+ //   });
 
     this.target = null;
     this.dragType = null;
@@ -479,7 +467,7 @@ class Diagram {
 //
 // APP
 // ===========================================================================
-let nextUid = 0;
+//let nextUid = 0;
 
 const bezierWeight = 1.0;
 
@@ -495,12 +483,12 @@ const shapes = [];
 const connectorPool = [];
 
 const dragProxy = document.querySelector("#drag-proxy");
-shapeElements = Array.from(document.querySelectorAll(".node-container"));
+//shapeElements = Array.from(document.querySelectorAll(".node-container"));
 
-const frag = document.createDocumentFragment();
-frag.appendChild(document.querySelector(".connector"));
-const connectorElement = frag.querySelector(".connector");
-const connectorLayer = document.querySelector("#connections-layer");
+//const frag = document.createDocumentFragment();
+//frag.appendChild(document.querySelector(".connector"));
+//const connectorElement = frag.querySelector(".connector");
+//const connectorLayer = document.querySelector("#connections-layer");
 
 document.addEventListener('mousedown', Drag.dragNode);
 // const diagram = new Diagram();

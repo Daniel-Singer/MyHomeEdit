@@ -24,7 +24,7 @@
   <button onclick="w3_close()" class="w3-bar-item w3-button w3-right w3-padding-16" title="close Sidebar">×</button>
   </div>
   <div class="w3-bar-block">
-  <a class="w3-bar-item w3-button" href="javascript:new FunctionBlockController(fbt).drawFB();">
+  <a class="w3-bar-item w3-button" href="javascript:actRoomController.addFunctionBlock(fbt);">
   <svg id="input" style="width:100%; height:100%;">
 	<g id="fb_" width="220" transform="scale(0.7)">
 	  <rect class="node-background" width="190" x="15" height="218" rx="2" ry="2"></rect>
@@ -34,10 +34,29 @@
 	  </g>
 	  <g class="node-type-header" width="190">
 	  <rect class="header-type-rect" width="190" x="15" y="30" height="30"></rect>
-	  <text class="header-title" x="110" y="55">Lichtsteuerung X5</text></g><g class="node-content"><g class="inoutputs"><g class="input-field" transform="translate(0, 72)"><g class="port" data-clickable="false"><polygon class="port-scrim_input" points="15,0 15,16 0,16 5,8 0,0" data-clickable="false" data-drag="port_5:port"></polygon></g><text class="port-label" x="25" y="14">taster1</text></g><g class="input-field" transform="translate(0, 102)"><g class="port" data-clickable="false"><polygon class="port-scrim_input" points="15,0 15,16 0,16 5,8 0,0" data-clickable="false" data-drag="port_5:port"></polygon></g><text class="port-label" x="25" y="14">taster2</text></g><g class="input-field" transform="translate(0, 132)"><g class="port" data-clickable="false"><polygon class="port-scrim_input" points="15,0 15,16 0,16 5,8 0,0" data-clickable="false" data-drag="port_5:port"></polygon></g><text class="port-label" x="25" y="14">taster3</text></g><g class="input-field" transform="translate(0, 162)"><g class="port" data-clickable="false"><polygon class="port-scrim_input" points="15,0 15,16 0,16 5,8 0,0" data-clickable="false" data-drag="port_5:port"></polygon></g><text class="port-label" x="25" y="14">taster4</text></g><g class="input-field" transform="translate(0, 192)"><g class="port" data-clickable="false"><polygon class="port-scrim_input" points="15,0 15,16 0,16 5,8 0,0" data-clickable="false" data-drag="port_5:port"></polygon></g><text class="port-label" x="25" y="14">taster5</text></g></g><g class="inoutputs"><g class="output-field" transform="translate(0, 72)"><g class="port" data-clickable="false"><polygon class="port-scrim" points="205,0 215,0 220,8 215,16 205,16" data-clickable="false" data-drag="port_5:port"></polygon></g><text class="port-label" x="195" y="14">OK</text></g><g class="output-field" transform="translate(0, 102)"><g class="port" data-clickable="false"><polygon class="port-scrim" points="205,0 215,0 220,8 215,16 205,16" data-clickable="false" data-drag="port_5:port"></polygon></g><text class="port-label" text-decoration="overline" x="195" y="14">OK</text></g></g></g></g>
+	  <text class="header-title" x="110" y="55">Lichtsteuerung X5</text></g>
+	  <g class="node-content"><g class="inoutputs">
+	  <g class="input-field" transform="translate(0, 72)">
+	  <g class="port" data-clickable="false">
+	  <polygon class="port-scrim_input" points="15,0 15,16 0,16 5,8 0,0" data-clickable="false" data-drag="port_5:port">
+	  </polygon></g><text class="port-label" x="25" y="14">eingang1</text></g>
+	  <g class="input-field" transform="translate(0, 102)"><g class="port" data-clickable="false">
+	  <polygon class="port-scrim_input" points="15,0 15,16 0,16 5,8 0,0" data-clickable="false" data-drag="port_5:port">
+	  </polygon></g><text class="port-label" x="25" y="14">eingang2</text></g><g class="input-field" transform="translate(0, 132)">
+	  <g class="port" data-clickable="false"><polygon class="port-scrim_input" points="15,0 15,16 0,16 5,8 0,0" data-clickable="false" data-drag="port_5:port">
+	  </polygon></g><text class="port-label" x="25" y="14">eingang3</text></g><g class="input-field" transform="translate(0, 162)">
+	  <g class="port" data-clickable="false"><polygon class="port-scrim_input" points="15,0 15,16 0,16 5,8 0,0" data-clickable="false" data-drag="port_5:port">
+	  </polygon></g><text class="port-label" x="25" y="14">eingang4</text></g><g class="input-field" transform="translate(0, 192)">
+	  <g class="port" data-clickable="false"><polygon class="port-scrim_input" points="15,0 15,16 0,16 5,8 0,0" data-clickable="false" data-drag="port_5:port">
+	  </polygon></g><text class="port-label" x="25" y="14">eingang5</text></g></g><g class="inoutputs">
+	  <g class="output-field" transform="translate(0, 72)"><g class="port" data-clickable="false">
+	  <polygon class="port-scrim" points="205,0 215,0 220,8 215,16 205,16" data-clickable="false" data-drag="port_5:port"></polygon>
+	  </g><text class="port-label" x="195" y="14">ausgang</text></g><g class="output-field" transform="translate(0, 102)">
+	  <g class="port" data-clickable="false"><polygon class="port-scrim" points="205,0 215,0 220,8 215,16 205,16" data-clickable="false" data-drag="port_5:port">
+	  </polygon></g><text class="port-label" text-decoration="overline" x="195" y="14">ausgang_inv</text></g></g></g></g>
   </svg>
   </a>
-  <a class="w3-bar-item w3-button" href="javascript:new FunctionBlockController(fbt).drawFB();">
+  <a class="w3-bar-item w3-button" href="javascript:actRoomController.addFunctionBlock(roll);">
   
   <svg id="input" style="width:100%; height:100%;">
 	<g id="fb_" width="220" transform="scale(0.7)">
@@ -66,7 +85,7 @@
   </svg>
   
   </a>
-  <a class="w3-bar-item w3-button" href="javascript:new InputController().drawInput();">
+  <a class="w3-bar-item w3-button" href="javascript:actRoomController.addInput();">
     <svg id="input" style="width:100%; height:25px;"> 
 	<g id="in_" width="190" transform="scale(0.8)">
 	  <rect class="node-background" width="175" height="30" rx="2" ry="2">
@@ -81,7 +100,7 @@
 	</g>
 	</svg>
   </a>
-  <a class="w3-bar-item w3-button" href="javascript:new OutputController().drawOutput();">
+  <a class="w3-bar-item w3-button" href="javascript:actRoomController.addOutput();">
   <svg id="input" style="width:100%; height:25px;"> 
 	<g id="out_" width="190" transform="scale(0.8)">
 	  <rect class="node-background" width="175" x="15" height="30" rx="2" ry="2">
@@ -96,45 +115,20 @@
 	</g>
   </svg>
   </a>
-  <a class="w3-bar-item w3-button" href="javascript:new OutputController().drawOutput();">
-  Licht +
+  <a class="w3-bar-item w3-button" href="javascript:addRoom('neu');">
+  Room +
   </a>
   </div>
 </div>
 
 <div id="main" style="margin-left: 190px;">
 <span title="open Sidebar" style="display:none; color: white;" id="openNav" class="w3-button w3-transparent w3-display-topleft w3-xlarge" onclick="w3_open()">&#9776;</span>
-<div id="main_graphics" style = "height:100%; display: block">
-<svg id="svg" style="width:100%; height:100%;">         
-  
-     
-    <g id="node-layer">      
-    </g>
-
-    <g id="connections-layer"></g>
-
-    <g class="connector">
-
-      <path class="connector-path-outline" />
-      <path class="connector-path" />
-
-      <circle class="connector-handle input-handle" cx="0" cy="0" r="4" />
-      <circle class="connector-handle inoutput-handle" cx="0" cy="0" r="4" />
-    </g>
-    
-    <circle id="drag-proxy" cx="0" cy="0" r="1" fill="none" />    
-</svg>
+<div id="rooms" class="room-main-div" style="display:block;">
 </div>
-<div id="main_parameter" style = "height:100%; display: none;">
-paramter
-</div>
-<div id="main_result" style = "height:100%; display: none;">
-result
-</div>
-<div class="w3-bar w3-black">
-  <button id="graphics" class="w3-bar-item w3-button" style="background-color: lightgray; color: black;" onclick="switch2Graphics();">Wohnzimmer Licht</button>
-  <button id="params" class="w3-bar-item w3-button" onclick="switch2Parameter();">Parameter</button>
-  <button id="result" class="w3-bar-item w3-button" onclick="switch2Result();">Result</button>
+<div id="rooms_bottom" class="w3-bar room-bar-black">
+<!--  <button id="Wohnzimmer_Licht" class="w3-bar-item w3-button" style="background-color: lightgray; color: black;" onclick="switch2Room('Wohnzimmer_Licht');">Wohnzimmer Licht</button>
+  <button id="Kueche_Licht" class="w3-bar-item w3-button" style="background-color: lightgray; color: black;" onclick="switch2Room('Kueche_Licht');">Kueche Licht</button>
+-->
 </div>
 </div>
 <span title="open Properties" style="display:none; color: white;" id="openProps" class="w3-button w3-transparent w3-display-topright w3-xlarge" onclick="openProperties()">&#9776;</span>
@@ -147,15 +141,12 @@ result
   <div id="properties">
   </div>
 </div>
-<!-- partial -->
-<!--  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js'></script> -->
-  <script  src="./drag.js"></script>
-  <!-- draggable commented out to check Drag.dragNode function -->
-<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/utils/Draggable.min.js'></script> -->
+</div>
+<script  src="./drag.js"></script>
 <script  src="./script.js"></script>
 <script  src="./views.js"></script>
 <script  src="./models.js"></script>
-<script  src="./controller.js"></script>
 <script  src="./properties.js"></script>
+<script  src="./controller.js"></script>
 </body>
 </html>
