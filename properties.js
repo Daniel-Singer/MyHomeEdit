@@ -33,7 +33,7 @@ class Properties {
 	}
 	
 	setFBProperties(fbC) {
-		if(fbC == undefined || fbC.fbm == undefined)
+		if(fbC == undefined || fbC.model == undefined)
 			return;
 		var props = document.getElementById("properties");
 		props.innerHTML="";
@@ -54,7 +54,7 @@ class Properties {
 		var propTd2 = document.createElement("td");
 		propTr.appendChild(propTd2);
 		var fbNameInput = document.createElement("input");
-		fbNameInput.value = fbC.fbm.name;
+		fbNameInput.value = fbC.model.name;
 		propTd2.appendChild(fbNameInput);
 		
 		fbNameInput.addEventListener ("change", function () {
@@ -93,7 +93,7 @@ class Properties {
 	}
 	
 	setOutputProperties(outputC) {
-		if(outputC == undefined || outputC.outm == undefined)
+		if(outputC == undefined || outputC.model == undefined)
 			return;
 		var props = document.getElementById("properties");
 		props.innerHTML="";
@@ -114,7 +114,7 @@ class Properties {
 		var propTd2 = document.createElement("td");
 		propTr.appendChild(propTd2);
 		var outputNameInput = document.createElement("input");
-		outputNameInput.value = outputC.outm.name;
+		outputNameInput.value = outputC.model.name;
 		propTd2.appendChild(outputNameInput);
 		
 		outputNameInput.addEventListener ("change", function () {
@@ -123,7 +123,7 @@ class Properties {
 	}
 	
 	setInputProperties(inputC) {  					// inputController
-		if(inputC == undefined || inputC.inm == undefined)
+		if(inputC == undefined || inputC.model == undefined)
 			return;
 		var props = document.getElementById("properties");
 		props.innerHTML="";
@@ -144,7 +144,7 @@ class Properties {
 		var propTd2 = document.createElement("td");
 		propTr.appendChild(propTd2);
 		var inputNameInput = document.createElement("input");
-		inputNameInput.value = inputC.inm.name;
+		inputNameInput.value = inputC.model.name;
 		propTd2.appendChild(inputNameInput);
 		
 		inputNameInput.addEventListener ("change", function () {

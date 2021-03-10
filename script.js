@@ -3,15 +3,25 @@ SVGElement.prototype.getTransformToElement = SVGElement.prototype.getTransformTo
 };
 
 function save() {
-  var devices = document.getElementById("node-layer");
-  alert(devices.innerHTML);
-  var connections = document.getElementById("connections-layer");
-  alert(connections.innerHTML);
+  var roomstring = "";
+  for (var key in RoomControllers) {
+	roomstring += "['room': '" + RoomControllers[key].roomm.name + "', 'Elements': ";
+	
+	for(ekey in RoomControllers[key].roomm.Elements) {
+		var elem = RoomControllers[key].roomm.Elements[ekey];
+		roomstring += "[{'name':'" + elem.model.name + "',";
+		roomstring += "'type': '" + elem.model.type + "',";
+		roomstring += "'x': " + elem.model.x + ",";
+		roomstring += "'y': " + elem.model.y + "}";
+	}
+	roomstring += "]";
+  }
+  alert(roomstring);
 }
 
 function load(devices) {
   var devices = document.getElementById("node-layer");
-  devices.innerx
+  //devices.innerx
 }
 
 function switch2Room(room) {

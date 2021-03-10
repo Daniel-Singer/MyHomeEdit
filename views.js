@@ -48,17 +48,17 @@ class RoomView {
 }
 
 class FunctionBlockView {
-  constructor(fbm, fbc) {			// FunctionBlockModel fb
-    this.fbm = fbm;
-	this.fbc = fbc;
+  constructor(model, controller) {			// FunctionBlockModel fb
+    this.model = model;
+	this.controller = controller;
 	this.rootg = undefined;
   }
 
   draw() {
     this.rootg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.rootg.setAttribute('class', 'node-container');
-	this.rootg.setAttribute('transform', 'translate(' + this.fbm.x + ', ' + this.fbm.y + ')');
-	this.rootg.setAttribute('id', this.fbm.id);
+	this.rootg.setAttribute('transform', 'translate(' + this.model.x + ', ' + this.model.y + ')');
+	this.rootg.setAttribute('id', this.model.id);
     this.rootg.setAttribute('width', fbWidth);
     var root = document.getElementById(actRoomController.roomm.name + "_node-layer");
     root.setAttribute('x', '30');
@@ -68,7 +68,7 @@ class FunctionBlockView {
 
  //   shapeElements.push(this.rootg);
 
-	var maxports = this.fbm.inputPorts.length;
+	var maxports = this.model.inputPorts.length;
 
     // create node header
     var header = document.createElementNS("http://www.w3.org/2000/svg", "rect");
@@ -109,14 +109,14 @@ class FunctionBlockView {
     this.caption.setAttribute('class', 'header-title');
     this.caption.setAttribute('x', fbInputWidth + ((fbWidth- fbInputWidth - fbOutputWidth)/2));
     this.caption.setAttribute('y', '25');
-    this.caption.innerHTML = this.fbm.name;
+    this.caption.innerHTML = this.model.name;
     g.appendChild(this.caption);
 	
 	var itext = document.createElementNS("http://www.w3.org/2000/svg", "text");
     itext.setAttribute('class', 'header-title');
     itext.setAttribute('x', fbInputWidth + ((fbWidth- fbInputWidth - fbOutputWidth)/2));
     itext.setAttribute('y', headerHeight + 25);
-    itext.innerHTML = this.fbm.type;
+    itext.innerHTML = this.model.type;
     typeg.appendChild(itext);
 
     g = document.createElementNS("http://www.w3.org/2000/svg", "g");
@@ -129,7 +129,7 @@ class FunctionBlockView {
   }
   
   updateCaption() {
-	  this.caption.innerHTML = this.fbm.name;
+	  this.caption.innerHTML = this.model.name;
   }
 
   drawInputs(root) {
@@ -138,7 +138,7 @@ class FunctionBlockView {
     root.appendChild(inputs);
     var i;
 
-    for (i = 1; i <= this.fbm.inputPorts.length; i++) {
+    for (i = 1; i <= this.model.inputPorts.length; i++) {
       this.drawInput(inputs, i);
     }
   }
@@ -149,13 +149,13 @@ class FunctionBlockView {
     root.appendChild(outputs);
     var i;
 
-    for (i = 1; i <= this.fbm.outputPorts.length; i++) {
+    for (i = 1; i <= this.model.outputPorts.length; i++) {
       this.drawOutput(outputs, i);
     }
   }
 
   drawInput(inp, index) {
-	var inputPort = this.fbm.inputPorts[index - 1];
+	var inputPort = this.model.inputPorts[index - 1];
     var input = document.createElementNS("http://www.w3.org/2000/svg", "g");
     input.setAttribute('class', 'input-field');
     input.setAttribute('transform', 'translate(0, ' + (headerHeight + headerTypeHeight + 12 + 30 * (index-1)) + ')');
@@ -185,7 +185,7 @@ class FunctionBlockView {
   }
   
   drawOutput(outp, index) {
-	var outputPort = this.fbm.outputPorts[index - 1];
+	var outputPort = this.model.outputPorts[index - 1];
     var input = document.createElementNS("http://www.w3.org/2000/svg", "g");
     input.setAttribute('class', 'output-field');
     input.setAttribute('transform', 'translate(0, ' + (headerHeight + headerTypeHeight + 12 + 30 * (index-1)) + ')');
@@ -224,9 +224,9 @@ var inputOutputWidth = 15;
 var inputHeight = 30;
 
 class InputView {
-  constructor(inm, inc) {			// InputModel fb
-    this.inm = inm;
-	this.inc = inc;
+  constructor(model, controller) {			// InputModel fb
+    this.model = model;
+	this.controller = controller;
 	this.rootg = undefined;
 	this.caption = undefined;
   }
@@ -234,8 +234,8 @@ class InputView {
   draw() {
     this.rootg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.rootg.setAttribute('class', 'node-container');
-	this.rootg.setAttribute('id', this.inm.id);
-	this.rootg.setAttribute('transform', 'translate(' + this.inm.x + ', ' + this.inm.y + ')');
+	this.rootg.setAttribute('id', this.model.id);
+	this.rootg.setAttribute('transform', 'translate(' + this.model.x + ', ' + this.model.y + ')');
     this.rootg.setAttribute('width', inputWidth);
     var root = document.getElementById(actRoomController.roomm.name + "_node-layer");
     root.setAttribute('x', '30');
@@ -258,14 +258,14 @@ class InputView {
     this.caption.setAttribute('class', 'header-title');
     this.caption.setAttribute('x', '15');
     this.caption.setAttribute('y', '20');
-    this.caption.innerHTML = this.inm.name;
+    this.caption.innerHTML = this.model.name;
     this.rootg.appendChild(this.caption);
 
 	this.drawOutput(this.rootg);
   }
   
   updateCaption() {
-	  this.caption.innerHTML = this.inm.name;
+	  this.caption.innerHTML = this.model.name;
   }
 
   drawOutput(outp) {
@@ -297,9 +297,9 @@ var outputInputWidth = 15;
 var outputHeight = 30;
 
 class OutputView {
-  constructor(outm, outc) {			// OutputModel fb
-    this.outm = outm;
-	this.outc = outc;
+  constructor(model, controller) {			// OutputModel fb
+    this.model = model;
+	this.controller = controller;
 	this.rootg = undefined;
 	this.caption = undefined;
   }
@@ -307,8 +307,8 @@ class OutputView {
   draw() {
     this.rootg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.rootg.setAttribute('class', 'node-container');
-	this.rootg.setAttribute('id', this.outm.id);
-	this.rootg.setAttribute('transform', 'translate(' + this.outm.x + ', ' + this.outm.y + ')');
+	this.rootg.setAttribute('id', this.model.id);
+	this.rootg.setAttribute('transform', 'translate(' + this.model.x + ', ' + this.model.y + ')');
     this.rootg.setAttribute('width', outputWidth);
     var root = document.getElementById(actRoomController.roomm.name + "_node-layer");
  //   root.setAttribute('x', '30');
@@ -332,14 +332,14 @@ class OutputView {
     this.caption.setAttribute('class', 'header-title');
     this.caption.setAttribute('x', outputInputWidth + 10);
     this.caption.setAttribute('y', '20');
-    this.caption.innerHTML = this.outm.name;
+    this.caption.innerHTML = this.model.name;
     this.rootg.appendChild(this.caption);
 
 	this.drawOutput(this.rootg);
   }
   
   updateCaption() {
-	  this.caption.innerHTML = this.outm.name;
+	  this.caption.innerHTML = this.model.name;
   }
   
   drawOutput(outp) {

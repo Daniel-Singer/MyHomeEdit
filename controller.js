@@ -2,93 +2,93 @@
 // add a new Functionblock (model and view)
 class FunctionBlockController {
   constructor(fbt) {						// function block type - previously defined fb
-    this.fbm = new FunctionBlockModel(fbt);
-	this.fbV = new FunctionBlockView(this.fbm);
-    shapeLookup[this.fbm.id] = this.fbm;
+    this.model = new FunctionBlockModel(fbt);
+	this.view = new FunctionBlockView(this.model);
+    shapeLookup[this.model.id] = this.model;
     // push function block into Device Array for easier overview
   }
   
   drawFB() {
-	this.fbV.draw();
+	this.view.draw();
   }
   
   updateName(name) {
-	  this.fbm.name = name;
-	  this.fbV.updateCaption();
+	  this.model.name = name;
+	  this.view.updateCaption();
   }
   
   delete() {
-	  this.fbV.delete();
+	  this.view.delete();
   }
 }
 
 // add a new Function (model and view)
 class FunctionController {
   constructor() {
-    this.funcm = new FunctionModel();
-	this.funcV = new FunctionView(this.funcm);
-    shapeLookup[func.id] = func;
+    this.model = new FunctionModel();
+	this.view = new FunctionView(this.model);
+    shapeLookup[model.id] = model;
     // push Device into Device Array for easier overview
-    actRoom.FuncArray[this.funcm.id] = this;
+    actRoom.Elements[this.model.id] = this;
   }
   
   drawFunc() {
-	this.funcV.draw();
+	this.view.draw();
   }
   
   updateName(name) {
-	  this.funcm.name = name;
-	  this.funcV.updateCaption();
+	  this.model.name = name;
+	  this.view.updateCaption();
   }
   
   delete() {
-	  this.funcV.delete();
+	  this.view.delete();
   }
 }
 
 class InputController {
   constructor() {						// function block type - previously defined fb
-    this.inm = new InputModel();
-	this.inV = new InputView(this.inm);
-    shapeLookup[this.inm.id] = this.inm;
+    this.model = new InputModel();
+	this.view = new InputView(this.model);
+    shapeLookup[this.model.id] = this.model;
     // push function block into Device Array for easier overview
     //actRoom.InArray[this.inm.id] = this;
   }
   
   drawInput() {
-	this.inV.draw();
+	this.view.draw();
   }
   
   updateName(name) {
-	  this.inm.name = name;
-	  this.inV.updateCaption();
+	  this.model.name = name;
+	  this.view.updateCaption();
   }
   
   delete() {
-	  this.inV.delete();
+	  this.view.delete();
   }
 }
 
 class OutputController {
   constructor() {						// function block type - previously defined fb
-    this.outm = new OutputModel();
-	this.outV = new OutputView(this.outm);
-    shapeLookup[this.outm.id] = this.outm;
+    this.model = new OutputModel();
+	this.view = new OutputView(this.model);
+    shapeLookup[this.model.id] = this.model;
     // push function block into Device Array for easier overview
     //actRoom.OutArray[this.outm.id] = this;
   }
   
   drawOutput() {
-	this.outV.draw();
+	this.view.draw();
   }
   
   updateName(name) {
-	  this.outm.name = name;
-	  this.outV.updateCaption();
+	  this.model.name = name;
+	  this.view.updateCaption();
   }
   
   delete() {
-	  this.outV.delete();
+	  this.view.delete();
   }
 }
 
@@ -204,19 +204,19 @@ class RoomController {
 	
 	addFunctionBlock(fbt) {
 		var fbc = new FunctionBlockController(fbt);
-		this.roomm.FBArray[fbc.fbm.id] = fbc;
+		this.roomm.Elements[fbc.model.id] = fbc;
 		fbc.drawFB();
 	}
 	
 	addInput() {
 		var inp = new InputController();
-		this.roomm.InArray[inp.inm.id] = inp;
+		this.roomm.Elements[inp.model.id] = inp;
 		inp.drawInput();
 	}
 	
 	addOutput() {
 		var outp = new OutputController();
-		this.roomm.OutArray[outp.outm.id] = outp;
+		this.roomm.Elements[outp.model.id] = outp;
 		outp.drawOutput();
 	}
 }

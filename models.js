@@ -4,14 +4,14 @@
 */
 class FunctionBlockModel {
   constructor(fbt) {
-    this.id = `fb_${actRoomController.roomm.FBArrayCount++}`;
+    this.id = `fb_${actRoomController.roomm.ElementsCount++}`;
     this.name = fbt.name;
 	this.type = fbt.type;
     //this.ports = ports;
     this.inputPorts = fbt.inputs;
     this.outputPorts = fbt.outputs;
-	this.x = 50;								// default drawing x coordinate
-	this.y = 50;								// default drawing y coordinate
+	this.x = 50;								// default translattion x
+	this.y = 50;								// default translattion y
   }
 }
 
@@ -22,28 +22,30 @@ class FunctionModel {
    // this.ports = ports;
     this.inputPorts = [];
     this.outputPorts = [];
-	this.x = 50;								// default drawing x coordinate
-	this.y = 50;								// default drawing y coordinate
+	this.x = 50;								// default translattion x
+	this.y = 50;								// default translattion y
   }
 }
 
 class InputModel {
   constructor() {
-	this.id = `in_${actRoomController.roomm.InArrayCount++}`;
-    this.name = "Schalter Tür";
+	this.id = `in_${actRoomController.roomm.ElementsCount++}`;
+    this.name = "Input";
+	this.type = "input";
 	this.output = undefined;
-	this.x = 50;								// default drawing x coordinate
-	this.y = 50;								// default drawing y coordinate
+	this.x = 50;								// default translattion x
+	this.y = 50;								// default translattion y
   }
 }
 
 class OutputModel {
   constructor() {
-	this.id = `out_${actRoomController.roomm.OutArrayCount++}`;
-    this.name = "Licht Wohnzimmer";
+	this.id = `out_${actRoomController.roomm.ElementsCount++}`;
+    this.name = "Output";
+	this.type = "output";
 	this.input = undefined;
-	this.x = 50;								// default drawing x coordinate
-	this.y = 50;								// default drawing y coordinate
+	this.x = 50;								// default translattion x
+	this.y = 50;								// default translattion y
   }
 }
 
@@ -66,6 +68,8 @@ class Connector {
 class RoomModel {
   constructor(name) {
     this.name = name;
+	this.Elements = {};
+	this.ElementsCount = 0;
     this.FBArray = {};
     this.FBArrayCount = 0;
     this.FuncArray = {};
