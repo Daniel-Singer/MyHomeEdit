@@ -208,6 +208,12 @@ class RoomController {
 		fbc.drawFB();
 	}
 	
+	addCPU(cput) {
+		var cpuc = new CPUController(cput);
+		this.roomm.Elements[cpuc.model.id] = cpuc;
+		cpuc.drawCPU();
+	}
+	
 	addInput() {
 		var inp = new InputController();
 		this.roomm.Elements[inp.model.id] = inp;
