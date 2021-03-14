@@ -23,6 +23,8 @@ const Drag = (() => {
 	};
 
 	function move(e) {
+		console.log(offsetX);
+		console.log(e.clientX);
 		updatePosition(nodeContainer, e.clientX, offsetX, e.clientY, offsetY)
 	}
 	return {
@@ -36,7 +38,7 @@ const Drag = (() => {
 				const rect = nodeContainer.getBoundingClientRect();
 				offsetX = e.clientX;
 				offsetY = e.clientY;
-
+ 
 				document.addEventListener('mousemove', move);
 
 				document.addEventListener('mouseup', function () {
@@ -45,7 +47,6 @@ const Drag = (() => {
 					elem.model.y = newY;
 					nodeContainer = null;
 					document.removeEventListener('mousemove', move);
-					PositionLookup.updateElementPosition(elem.model)
 				});
 
 				var button = e.which || e.button;
