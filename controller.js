@@ -92,7 +92,7 @@ class OutputController {
   }
 }
 
-class ConnecitonController {
+class ConnectionController {
 	constructor() {
 	}
 	
