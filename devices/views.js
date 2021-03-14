@@ -1,7 +1,7 @@
 // add a new Functionblock
 var headerHeight = 30;
 var headerTypeHeight = 30;
-var fbWidth = 220;
+var cpuWidth = 123;
 var fbInputWidth = 15;
 var fbOutputWidth = 15;
 
@@ -18,11 +18,11 @@ class CPUView {
     this.rootg.setAttribute('class', 'node-container');
 	this.rootg.setAttribute('transform', 'translate(' + this.model.x + ', ' + this.model.y + ')');
 	this.rootg.setAttribute('id', this.model.id);
-    this.rootg.setAttribute('width', fbWidth);
+    this.rootg.setAttribute('width', cpuWidth);
     var root = document.getElementById(actRoomController.roomm.name + "_node-layer");
     root.setAttribute('x', '30');
     root.setAttribute('y', '30');
-    root.setAttribute('width', fbWidth);
+    root.setAttribute('width', cpuWidth);
     root.appendChild(this.rootg);
 
  //   shapeElements.push(this.rootg);
@@ -32,7 +32,7 @@ class CPUView {
     // create node header
     var header = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     header.setAttribute('class', 'node-background');
-    header.setAttribute('width', fbWidth - fbInputWidth - fbOutputWidth);
+    header.setAttribute('width', cpuWidth);// - fbInputWidth - fbOutputWidth);
     header.setAttribute('x', fbInputWidth)
     header.setAttribute('height', (maxports - 1) * 30 + 38 + headerHeight + headerTypeHeight);
     header.setAttribute('rx', '2');
@@ -41,24 +41,24 @@ class CPUView {
 
     var g = document.createElementNS("http://www.w3.org/2000/svg", "g");
     g.setAttribute('class', 'node-header');
-    g.setAttribute('width', fbWidth - fbInputWidth - fbOutputWidth)
+    g.setAttribute('width', cpuWidth);// - fbInputWidth - fbOutputWidth)
     this.rootg.appendChild(g);
 
     let irect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     irect.setAttribute('class', 'header-rect');
-    irect.setAttribute('width', fbWidth - fbInputWidth - fbOutputWidth);
+    irect.setAttribute('width', cpuWidth);// - fbInputWidth - fbOutputWidth);
     irect.setAttribute('x', fbInputWidth);
     irect.setAttribute('height', headerHeight);
     g.appendChild(irect);
 	
 	var typeg = document.createElementNS("http://www.w3.org/2000/svg", "g");
     typeg.setAttribute('class', 'node-type-header');
-    typeg.setAttribute('width', fbWidth - fbInputWidth - fbOutputWidth)
+    typeg.setAttribute('width', cpuWidth);// - fbInputWidth - fbOutputWidth)
     this.rootg.appendChild(typeg);
 	
 	irect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     irect.setAttribute('class', 'header-type-rect');
-    irect.setAttribute('width', fbWidth - fbInputWidth - fbOutputWidth);
+    irect.setAttribute('width', cpuWidth);// - fbInputWidth - fbOutputWidth);
     irect.setAttribute('x', fbInputWidth);
 	irect.setAttribute('y', headerHeight);
     irect.setAttribute('height', headerTypeHeight);

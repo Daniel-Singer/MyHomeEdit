@@ -493,15 +493,12 @@ const shapes = [];
 const connectorPool = [];
 
 const dragProxy = document.querySelector("#drag-proxy");
-//shapeElements = Array.from(document.querySelectorAll(".node-container"));
-
-//const frag = document.createDocumentFragment();
-//frag.appendChild(document.querySelector(".connector"));
-//const connectorElement = frag.querySelector(".connector");
-//const connectorLayer = document.querySelector("#connections-layer");
 
 document.addEventListener('mousedown', Drag.dragNode);
-// const diagram = new Diagram();
+document.addEventListener('contextmenu', function(e) {
+    alert("You've tried to open context menu"); //here you draw your own menu
+    e.preventDefault();
+  }, false);
 
 function w3_open() {
   document.getElementById("main").style.marginLeft = "190px";

@@ -13,6 +13,11 @@ class FunctionBlockModel {
 	this.x = 50;								// default translattion x
 	this.y = 50;								// default translattion y
   }
+  
+  // add a connection to the defined port
+  connect(port, connector) {
+	  
+  }
 }
 
 class FunctionModel {

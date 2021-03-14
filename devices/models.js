@@ -1,6 +1,6 @@
 /*
 * this file contains all possible element models
-* like FunctionBlock, Function, Input, Output, ..
+* like CPU, IO Modules, ..
 */
 class CPUModel {
   constructor(cput) {
