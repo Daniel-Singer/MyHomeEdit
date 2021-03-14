@@ -1,18 +1,20 @@
 // dragging functions
-
 const Drag = (() => {
+	let offsetX;
+	let offsetY;
+	let nodeContainer = null;
+	let newX = 0;
+	let newY = 0;
 	function updatePosition(element, x, offsetX, y, offsetY) {
 		const menuWidth = document.querySelector('.w3-bar-block').getBoundingClientRect().width;
-		console.log(menuWidth)
 		if (element !== null) {
-			var newx = x - offsetX - menuWidth;
-			var newy = y - offsetY;
-			newx = Math.round(newx / 5) * 5;
-			newy = Math.round(newy / 5) * 5;
 			var elem = actRoomController.roomm.Elements[element.id];
-			elem.model.x = newx;
-			elem.model.y = newy;
-			element.setAttribute('transform', 'translate(' + newx + ',' + newy + ")");
+			newX = x - offsetX + elem.model.x;
+			newY = y - offsetY + elem.model.y;
+			newX = Math.round(newX / 5) * 5;
+			newY = Math.round(newY / 5) * 5;
+			console.log()
+			element.setAttribute('transform', 'translate(' + newX + ',' + newY + ")");
 		}
 	};
 
@@ -20,10 +22,13 @@ const Drag = (() => {
 		return measurement - (measurement + offset - clientPosition);
 	};
 
+	function move(e) {
+		console.log(offsetX);
+		console.log(e.clientX);
+		updatePosition(nodeContainer, e.clientX, offsetX, e.clientY, offsetY)
+	}
 	return {
 		dragNode(e) {
-			let nodeContainer = null;
-			// find node container
 			nodeContainer = e.target.parentElement;
 			if (!nodeContainer.classList.contains('node-container')) {
 				nodeContainer = nodeContainer.parentElement;
@@ -31,16 +36,17 @@ const Drag = (() => {
 			if (nodeContainer.classList.contains('node-container')) {
 
 				const rect = nodeContainer.getBoundingClientRect();
-
-				const offsetX = getOffset(rect.width, rect.x, e.clientX);
-				const offsetY = getOffset(rect.height, rect.y, e.clientY);
-
-				document.addEventListener('mousemove', function (e) {
-					updatePosition(nodeContainer, e.clientX, offsetX, e.clientY, offsetY)
-				});
+				offsetX = e.clientX;
+				offsetY = e.clientY;
+ 
+				document.addEventListener('mousemove', move);
 
 				document.addEventListener('mouseup', function () {
+					var elem = actRoomController.roomm.Elements[nodeContainer.id];
+					elem.model.x = newX;
+					elem.model.y = newY;
 					nodeContainer = null;
+					document.removeEventListener('mousemove', move);
 				});
 
 				var button = e.which || e.button;
@@ -86,14 +92,19 @@ const Drag = (() => {
 						// delete Output
 						elem.delete();
 						delete actRoomController.roomm.Elements[id];
+						return false;
 					}
 					else {
 						properties.setOutputProperties(elem);
 					}
 				}
-			} else {
+			} else if (nodeContainer.classList.contains('output-field')) {
 				// create connector
-
+				new ConnectionController();
+				console.log(nodeContainer);
+			} else if (nodeContainer.classList.contains('input-field')) {
+				// create connector
+				console.log(nodeContainer);
 			}
 		}
 	}
